@@ -1,0 +1,19 @@
+﻿sample_frame,quota_name,quota_category,quota_prop
+St. Louis,age,18-29,0.17
+St. Louis,age,30-44,0.23
+St. Louis,age,45-64,0.35
+St. Louis,age,65+,0.25
+St. Louis,gender-race,male-white,0.2
+St. Louis,gender-race,male-black,0.15
+St. Louis,gender-race,male-hispanic,0.1
+St. Louis,gender-race,male-asian,0.04
+St. Louis,gender-race,male-other,0.01
+St. Louis,gender-race,female-white,0.2
+St. Louis,gender-race,female-black,0.15
+St. Louis,gender-race,female-hispanic,0.1
+St. Louis,gender-race,female-asian,0.04
+St. Louis,gender-race,female-other,0.01
+St. Louis,education,no hs,0.15
+St. Louis,education,hs,0.25
+St. Louis,education,some college,0.35
+St. Louis,education,college degree,0.25
