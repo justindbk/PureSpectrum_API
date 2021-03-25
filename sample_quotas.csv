@@ -1,19 +1,83 @@
-﻿sample_frame,quota_name,quota_category,quota_prop
-St. Louis,age,18-29,0.17
-St. Louis,age,30-44,0.23
-St. Louis,age,45-64,0.35
-St. Louis,age,65+,0.25
-St. Louis,gender-race,male-white,0.2
-St. Louis,gender-race,male-black,0.15
-St. Louis,gender-race,male-hispanic,0.1
-St. Louis,gender-race,male-asian,0.04
-St. Louis,gender-race,male-other,0.01
-St. Louis,gender-race,female-white,0.2
-St. Louis,gender-race,female-black,0.15
-St. Louis,gender-race,female-hispanic,0.1
-St. Louis,gender-race,female-asian,0.04
-St. Louis,gender-race,female-other,0.01
-St. Louis,education,no hs,0.15
-St. Louis,education,hs,0.25
-St. Louis,education,some college,0.35
-St. Louis,education,college degree,0.25
+﻿sample_frame,state_fips_code,quota_name,quota_category,quota_prop
+St. Louis,,age,18-29,0.17
+St. Louis,,age,30-44,0.23
+St. Louis,,age,45-64,0.35
+St. Louis,,age,65+,0.25
+St. Louis,,gender-race,male-white,0.2
+St. Louis,,gender-race,male-black,0.15
+St. Louis,,gender-race,male-hispanic,0.1
+St. Louis,,gender-race,male-asian,0.04
+St. Louis,,gender-race,male-other,0.01
+St. Louis,,gender-race,female-white,0.2
+St. Louis,,gender-race,female-black,0.15
+St. Louis,,gender-race,female-hispanic,0.1
+St. Louis,,gender-race,female-asian,0.04
+St. Louis,,gender-race,female-other,0.01
+St. Louis,,education,no hs,0.15
+St. Louis,,education,hs,0.25
+St. Louis,,education,some college,0.35
+St. Louis,,education,college degree,0.25
+Massachusetts,25,education,no hs,0.15
+Massachusetts,25,education,hs,0.25
+Massachusetts,25,education,some college,0.35
+Massachusetts,25,education,college degree,0.25
+Massachusetts,25,gender-race-age,male-white-18-24,0.02
+Massachusetts,25,gender-race-age,male-black-18-24,0.015
+Massachusetts,25,gender-race-age,male-hispanic-18-24,0.01
+Massachusetts,25,gender-race-age,male-asian-18-24,0.005
+Massachusetts,25,gender-race-age,male-other-18-24,0.001
+Massachusetts,25,gender-race-age,female-white-18-24,0.02
+Massachusetts,25,gender-race-age,female-black-18-24,0.015
+Massachusetts,25,gender-race-age,female-hispanic-18-24,0.01
+Massachusetts,25,gender-race-age,female-asian-18-24,0.005
+Massachusetts,25,gender-race-age,female-other-18-24,0.001
+Massachusetts,25,gender-race-age,male-white-25-34,0.02
+Massachusetts,25,gender-race-age,male-black-25-34,0.015
+Massachusetts,25,gender-race-age,male-hispanic-25-34,0.01
+Massachusetts,25,gender-race-age,male-asian-25-34,0.005
+Massachusetts,25,gender-race-age,male-other-25-34,0.001
+Massachusetts,25,gender-race-age,female-white-25-34,0.02
+Massachusetts,25,gender-race-age,female-black-25-34,0.015
+Massachusetts,25,gender-race-age,female-hispanic-25-34,0.01
+Massachusetts,25,gender-race-age,female-asian-25-34,0.005
+Massachusetts,25,gender-race-age,female-other-25-34,0.001
+Massachusetts,25,gender-race-age,male-white-35-44,0.02
+Massachusetts,25,gender-race-age,male-black-35-44,0.015
+Massachusetts,25,gender-race-age,male-hispanic-35-44,0.01
+Massachusetts,25,gender-race-age,male-asian-35-44,0.005
+Massachusetts,25,gender-race-age,male-other-35-44,0.001
+Massachusetts,25,gender-race-age,female-white-35-44,0.02
+Massachusetts,25,gender-race-age,female-black-35-44,0.015
+Massachusetts,25,gender-race-age,female-hispanic-35-44,0.01
+Massachusetts,25,gender-race-age,female-asian-35-44,0.005
+Massachusetts,25,gender-race-age,female-other-35-44,0.001
+Massachusetts,25,gender-race-age,male-white-45-54,0.02
+Massachusetts,25,gender-race-age,male-black-45-54,0.015
+Massachusetts,25,gender-race-age,male-hispanic-45-54,0.01
+Massachusetts,25,gender-race-age,male-asian-45-54,0.005
+Massachusetts,25,gender-race-age,male-other-45-54,0.001
+Massachusetts,25,gender-race-age,female-white-45-54,0.02
+Massachusetts,25,gender-race-age,female-black-45-54,0.015
+Massachusetts,25,gender-race-age,female-hispanic-45-54,0.01
+Massachusetts,25,gender-race-age,female-asian-45-54,0.005
+Massachusetts,25,gender-race-age,female-other-45-54,0.001
+Massachusetts,25,gender-race-age,male-white-55-64,0.02
+Massachusetts,25,gender-race-age,male-black-55-64,0.015
+Massachusetts,25,gender-race-age,male-hispanic-55-64,0.01
+Massachusetts,25,gender-race-age,male-asian-55-64,0.005
+Massachusetts,25,gender-race-age,male-other-55-64,0.001
+Massachusetts,25,gender-race-age,female-white-55-64,0.02
+Massachusetts,25,gender-race-age,female-black-55-64,0.015
+Massachusetts,25,gender-race-age,female-hispanic-55-64,0.01
+Massachusetts,25,gender-race-age,female-asian-55-64,0.005
+Massachusetts,25,gender-race-age,female-other-55-64,0.001
+Massachusetts,25,gender-race-age,male-white-65-99,0.02
+Massachusetts,25,gender-race-age,male-black-65-99,0.015
+Massachusetts,25,gender-race-age,male-hispanic-65-99,0.01
+Massachusetts,25,gender-race-age,male-asian-65-99,0.005
+Massachusetts,25,gender-race-age,male-other-65-99,0.001
+Massachusetts,25,gender-race-age,female-white-65-99,0.02
+Massachusetts,25,gender-race-age,female-black-65-99,0.015
+Massachusetts,25,gender-race-age,female-hispanic-65-99,0.01
+Massachusetts,25,gender-race-age,female-asian-65-99,0.005
+Massachusetts,25,gender-race-age,female-other-65-99,0.001
