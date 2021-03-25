@@ -1,5 +1,6 @@
-## Survey without quotas: ------------------------------------------------------
+require(httr)
 
+## Survey without quotas: ------------------------------------------------------
 ps_post_survey_noquotas <- function(survey_title,
                            survey_category_code = 232,  # default: "exciting-new"
                            survey_localization = "en_US",
@@ -114,6 +115,11 @@ ps_post_survey <- function(survey_title = NULL,
          range_sets = list(list(from=18,
                            to = 99,
                            units=311)) # 311=years, set units to 312 for months instead per https://purespectrum.atlassian.net/wiki/spaces/PBA/pages/735903884/Codes+Units
+    ),
+    list(qualification_code = 213, # income
+         range_sets = list(list(from=0,
+                                to = 999999,
+                                units=321)) # 321=USD
     ),
     list(qualification_code = 217, # relationship status
          condition_codes = c("111","112","113","114","115","116") # no 117, https://purespectrum.atlassian.net/wiki/spaces/PBA/pages/33493049/Qualification+and+Condition+Codes
@@ -278,7 +284,13 @@ ps_post_survey <- function(survey_title = NULL,
       )
       
     )
-  } else{educ_quotas_list <- NULL}
+  } else{
+    educ_quotas_list <- list(buyer_quota_id = "educ-quota-all",
+                             required_count = sample_size,
+                             criteria = list(list(qualification_code =  216,
+                                                  condition_codes= list("111","112","113","114","115","116")))
+    )
+  }
   
   ## Setup nested quotas -------------------------------------------------------
   # doing gender X race X age (Matt's age categories), 
@@ -1247,6 +1259,30 @@ ps_post_survey <- function(survey_title = NULL,
     )
   } else{genderXage_quotas_list <- NULL}
   
+  ## Setup fake quotas to enable variable pass-thru ----------------------------
+  fake_quotas <- list(
+    list(buyer_quota_id = "income-quota-all",
+         required_count = sample_size,
+         criteria = list(list(qualification_code =  213,
+                              range_sets= list(list(from=0,to=999999, # set bin range for age here
+                                                    units=321))))
+    ),
+    list(buyer_quota_id = "relationship-quota-all",
+         required_count = sample_size,
+         criteria = list(list(qualification_code =  217,
+                              condition_codes= list("111","112","113","114","115","116")))
+    ),
+    list(buyer_quota_id = "children-quota-all",
+         required_count = sample_size,
+         criteria = list(list(qualification_code =  218,
+                              condition_codes= list("111","112")))
+    ),
+    list(buyer_quota_id = "employment-quota-all",
+         required_count = sample_size,
+         criteria = list(list(qualification_code =  215,
+                              condition_codes= list("111","112","113","114","115")))
+    )
+  )
   
   quota_list <-  c(
     gender_quotas_list,
@@ -1255,7 +1291,8 @@ ps_post_survey <- function(survey_title = NULL,
     educ_quotas_list,
     genderXraceXage_quotas_list,
     genderXrace_quotas_list,
-    genderXage_quotas_list
+    genderXage_quotas_list,
+    fake_quotas
     
   )
   
