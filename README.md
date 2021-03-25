@@ -1,5 +1,5 @@
 # PureSpectrum_API
-Functions to work with the PureSpectrum Buyer API to set up and launch surveys
+Functions to work with the PureSpectrum Buyer API to set up and launch surveys. See example code in ```example_survey_posting.R```
 
 - For API Swagger documentation see: https://app.swaggerhub.com/apis/pscoordinator/psBuyApi/1.3
 
