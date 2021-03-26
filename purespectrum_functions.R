@@ -7,7 +7,7 @@ ps_post_survey_noquotas <- function(survey_title,
                            sample_size,
                            expected_ir = 80, # expected IR in %
                            survey_length, # length of survey, in minutes
-                           offer_price, # CPI to offer for payment in dollars
+                           offer_price = NULL, # CPI to offer for payment in dollars - can leave empty for market price
                            field_time = 14, # field time in days
                            live_url,
                            test_url,
@@ -20,11 +20,13 @@ ps_post_survey_noquotas <- function(survey_title,
                        completes_required = sample_size,
                        expected_ir = expected_ir, # expected IR in %
                        expected_loi = survey_length, # length of survey, in minutes
-                       offer_price = offer_price,
+                       offer_price = offer_price, 
                        field_time = field_time, # field time in days
                        live_url = live_url,
                        test_url = test_url
   )
+  request_body <- request_body %>% discard(is.null) 
+  
   
   basepath <- "https://staging.spectrumsurveys.com/buyers/v2/surveys"
   r <- POST(basepath, 
@@ -54,13 +56,13 @@ ps_post_survey_noquotas <- function(survey_title,
 ps_post_survey <- function(survey_title = NULL,
                            survey_category_code = 232,  # default: "exciting-new"
                            survey_localization = "en_US",
-                           sample_size = NULL,
+                           sample_size,
                            expected_ir = 80, # expected IR in %
                            survey_length = NULL, # length of survey, in minutes
-                           offer_price = NULL, # CPI to offer for payment in dollars
+                           offer_price = NULL, # CPI to offer for payment in dollars - can leave empty for market price
                            field_time = 14, # field time in days
-                           live_url = NULL,
-                           test_url = NULL,
+                           live_url,
+                           test_url,
                            zips = NULL, # if targeting by zip code provide enquoted character vector of zip codes
                            counties = NULL,
                            states = NULL, # if targeting by states, provide enquoted list of FIPS codes from here: https://purespectrum.atlassian.net/wiki/spaces/PBA/pages/34552054/Location+codes+US+States+to+codes+mapping
@@ -1316,6 +1318,8 @@ ps_post_survey <- function(survey_title = NULL,
     qualifications = qualifications_list,
     quotas = quota_list
   )
+  
+  request_body <- request_body %>% discard(is.null) 
   
   basepath <- "https://staging.spectrumsurveys.com/buyers/v2/surveys"
   
