@@ -88,19 +88,46 @@ ps_post_survey <- function(survey_title = NULL,
   
   
   # create geographic qualifications -------------------------------------------
-  if(!is.null(zips)){zips_list <- list(qualification_code = 229, # zip codes
-                                       condition_codes = c(zips)
-  )
+  if(!is.null(zips)){
+    zips <- str_pad(zips,width = 5,side = "left",pad = "0") # in case numeric codes entered
+    if(length(zips)>1){
+      zips_list <- list(qualification_code = 229, # zip codes
+                        condition_codes = c(zips)
+      )
+    }
+    if(length(zips)==1){
+      zips_list <- list(qualification_code = 229, # zip codes
+                        condition_codes = list(zips)
+      )
+    }
   } else{zips_list <- NULL}
   
-  if(!is.null(counties)){counties_list <- list(qualification_code = 228, # counties
-                                               condition_codes = c(counties)
-  )
+  if(!is.null(counties)){
+    counties <- str_pad(counties,width = 5,side = "left",pad = "0") # in case numeric codes entered
+    if(length(counties)>1){
+      counties_list <- list(qualification_code = 228, # counties
+                            condition_codes = c(counties)
+      )
+    }
+    if(length(counties)==1){
+      counties_list <- list(qualification_code = 228, # counties
+                            condition_codes = list(counties)
+      )
+    }
   } else{counties_list <- NULL}
   
-  if(!is.null(states)){states_list <- list(qualification_code = 225, # state
-                                           condition_codes = c(states)
-  )
+  if(!is.null(states)){
+    states <- as.character(as.numeric(states)) # remove extra leading zeros - will lead to weird errors
+    if(length(states)>1){
+      states_list <- list(qualification_code = 225, # state
+                          condition_codes = c(states)
+      )
+    }
+    if(length(states)==1){
+      states_list <- list(qualification_code = 225, # state
+                          condition_codes = list(states)
+      )
+    }
   } else{states_list <- NULL}
   
   

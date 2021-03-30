@@ -62,3 +62,18 @@ ps_post_survey(survey_title = "sample-wquotas-nested-wstate",
                states = filter(quotas,sample_frame=="Massachusetts") %>% select(state_fips_code) %>% unique() %>% as.character(),
                access_token = my_token
 )
+
+ps_post_survey(survey_title = "sample-wquotas-nested-wcounties",
+               survey_category_code = 232,  # exciting-new
+               survey_localization = "en_US",
+               sample_size = 2000,
+               expected_ir = 80, # expected IR in %
+               survey_length = 10, # length of survey, in minutes
+               # offer_price = 1.5,
+               field_time = 14, # field time in days
+               live_url = "https://harvard.az1.qualtrics.com/jfe/form/SV_5d41NokucVvbGbY?sample_frame=St. Louis&zipcode=[%%229%%]&gender=[%%211%%]&age=[%%212%%]&race=[%%214%%]&educ=[%%216%%]&state=[%%225%%]&inc=[%%213%%]&relat=[%%217%%]&child=[%%218%%]&emp=[%%215%%]",
+               test_url = "https://harvard.az1.qualtrics.com/jfe/preview/SV_5d41NokucVvbGbY?Q_CHL=preview&Q_SurveyVersionID=current&sample_frame=St. Louis&zipcode=[%%229%%]&gender=[%%211%%]&age=[%%212%%]&race=[%%214%%]&educ=[%%216%%]&state=[%%225%%]&inc=[%%213%%]&relat=[%%217%%]&child=[%%218%%]&emp=[%%215%%]",
+               quotas = filter(quotas,sample_frame=="Massachusetts"),
+               counties = c("25025","25017"), # FIPS codes for Suffolk & Middlesex counties, MA
+               access_token = my_token
+)
