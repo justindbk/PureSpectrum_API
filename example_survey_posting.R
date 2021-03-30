@@ -51,10 +51,10 @@ ps_post_survey(survey_title = "sample-st.louis-wquotas-nested-wzips",
 ps_post_survey(survey_title = "sample-wquotas-nested-wstate",
                survey_category_code = 232,  # exciting-new
                survey_localization = "en_US",
-               sample_size = 200,
+               sample_size = 2000,
                expected_ir = 80, # expected IR in %
                survey_length = 10, # length of survey, in minutes
-               offer_price = 1.5,
+               # offer_price = 1.5,
                field_time = 14, # field time in days
                live_url = "https://harvard.az1.qualtrics.com/jfe/form/SV_5d41NokucVvbGbY?sample_frame=St. Louis&zipcode=[%%229%%]&gender=[%%211%%]&age=[%%212%%]&race=[%%214%%]&educ=[%%216%%]&state=[%%225%%]&inc=[%%213%%]&relat=[%%217%%]&child=[%%218%%]&emp=[%%215%%]",
                test_url = "https://harvard.az1.qualtrics.com/jfe/preview/SV_5d41NokucVvbGbY?Q_CHL=preview&Q_SurveyVersionID=current&sample_frame=St. Louis&zipcode=[%%229%%]&gender=[%%211%%]&age=[%%212%%]&race=[%%214%%]&educ=[%%216%%]&state=[%%225%%]&inc=[%%213%%]&relat=[%%217%%]&child=[%%218%%]&emp=[%%215%%]",
