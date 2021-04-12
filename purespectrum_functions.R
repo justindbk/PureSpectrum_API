@@ -28,7 +28,7 @@ ps_post_survey_noquotas <- function(survey_title,
   request_body <- request_body %>% discard(is.null) 
   
   
-  basepath <- "https://api.spectrumsurveys.com/buyers/v2"
+  basepath <- "https://api.spectrumsurveys.com/buyers/v2/surveys"
   r <- POST(basepath, 
             add_headers(`access-token` = access_token, accept = "application/json"),
             body = request_body, 
@@ -1348,7 +1348,7 @@ ps_post_survey <- function(survey_title = NULL,
   
   request_body <- request_body %>% discard(is.null) 
   
-  basepath <- "https://api.spectrumsurveys.com/buyers/v2"
+  basepath <- "https://api.spectrumsurveys.com/buyers/v2/surveys"
   
   # Post API request -----------------------------------------------------------
   r <- POST(basepath, 
