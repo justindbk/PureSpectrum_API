@@ -89,7 +89,7 @@ ps_post_survey <- function(survey_title = NULL,
   
   ## create actual target numbers from the quota %s ----------------------------
   quotas <- mutate(quotas,
-                   quota_value = round(quota_prop*sample_size,1))
+                   quota_value = round(quota_prop*sample_size,0))
   
   
   # create geographic qualifications -------------------------------------------
@@ -142,9 +142,20 @@ ps_post_survey <- function(survey_title = NULL,
     list(qualification_code = 211, # gender
          condition_codes = c("111","112") # codes must be in quotations marks
     ),
-    list(qualification_code = 214, # race
+    
+    ## Use either combo race/ethn question:
+    list(qualification_code = 214, # race/ethnicity
          condition_codes = c("111","112","113","114","115","116","117") # for race, can't use 118-120 even though they're in Qualifications doc here: https://purespectrum.atlassian.net/wiki/spaces/PBA/pages/33493049/Qualification+and+Condition+Codes
     ),
+    # OR use separate two
+    list(qualification_code = 244, # race
+         condition_codes = c("111","112","113","114","115","116")
+    ),
+    list(qualification_code = 245, # ethnicity (Hispanic origin)
+         condition_codes = c("111","112")
+    ),
+    
+    
     list(qualification_code = 212, # age
          range_sets = list(list(from=18,
                            to = 99,
@@ -193,7 +204,7 @@ ps_post_survey <- function(survey_title = NULL,
     )
   } else{gender_quotas_list <- NULL}
   
-  if("race" %in% quotas$quota_name){
+  if("race" %in% quotas$quota_name & !("hispanic" %in% quotas$quota_category)){
     race_quotas_list <- list(
       list(buyer_quota_id = "race-quota-white",
            required_count = filter(quotas,quota_name=="race" & quota_category=="white") %>% select(quota_value) %>% as.numeric(),
@@ -221,7 +232,45 @@ ps_post_survey <- function(survey_title = NULL,
                                 condition_codes= list("115","116","117")))
       )
     )
-  } else{race_quotas_list <- NULL}
+  } if("race" %in% quotas$quota_name & "hispanic" %in% quotas$quota_category){
+    race_quotas_list <- list(
+      list(buyer_quota_id = "race-quota-white",
+           required_count = filter(quotas,quota_name=="race" & quota_category=="white") %>% select(quota_value) %>% as.numeric(),
+           criteria = list(list(qualification_code =  244,
+                                condition_codes= list("111")))
+      ),
+      list(buyer_quota_id = "race-quota-black",
+           required_count = filter(quotas,quota_name=="race" & quota_category=="black") %>% select(quota_value) %>% as.numeric(),
+           criteria = list(list(qualification_code =  244,
+                                condition_codes= list("112")))
+      ),
+      list(buyer_quota_id = "race-quota-asian",
+           required_count = filter(quotas,quota_name=="race" & quota_category=="asian") %>% select(quota_value) %>% as.numeric(),
+           criteria = list(list(qualification_code =  244,
+                                condition_codes= list("113")))
+      ),
+      list(buyer_quota_id = "race-quota-other",
+           required_count = filter(quotas,quota_name=="race" & quota_category=="other") %>% select(quota_value) %>% as.numeric(),
+           criteria = list(list(qualification_code =  244,
+                                condition_codes= list("114","115","116")))
+      )
+    )
+    ethnicity_quotas_list <- list(
+      list(buyer_quota_id = "ethnicity-quota-hispanic",
+           required_count = filter(quotas,quota_name=="ethnicity" & quota_category=="hispanic") %>% select(quota_value) %>% as.numeric(),
+           criteria = list(list(qualification_code =  245,
+                                condition_codes= list("111")))
+      ),
+      list(buyer_quota_id = "ethnicity-quota-nonhispanic",
+           required_count = filter(quotas,quota_name=="ethnicity" & quota_category=="non-hispanic") %>% select(quota_value) %>% as.numeric(),
+           criteria = list(list(qualification_code =  245,
+                                condition_codes= list("112")))
+      )
+    )
+  } else{
+    race_quotas_list <- NULL
+    ethnicity_quotas_list <- NULL
+    }
   
   if("age" %in% quotas$quota_name){
     if("18-29" %in% quotas$quota_category){# Set up for Justin's age categories
@@ -1321,6 +1370,7 @@ ps_post_survey <- function(survey_title = NULL,
   quota_list <-  c(
     gender_quotas_list,
     race_quotas_list,
+    ethnicity_quotas_list,
     age_quotas_list,
     educ_quotas_list,
     genderXraceXage_quotas_list,
